@@ -12,4 +12,27 @@ public class Condition {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
+	private String condition;
+
+	public int getId() {
+		return id;
+	}
+
+	public String getCondition() {
+		return condition;
+	}
+
+	public void setCondition(String condition) {
+		this.condition = condition;
+	}
+
+	@Override
+	public String toString() {
+		return "Condition [id=" + id + ", condition=" + condition + "]";
+	}
+	
+	
+	
+	
+	
 }

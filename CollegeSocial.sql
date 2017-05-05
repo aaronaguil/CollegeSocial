@@ -81,9 +81,8 @@ CREATE TABLE IF NOT EXISTS `Post` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(45) NOT NULL,
   `description` VARCHAR(45) NOT NULL,
-  `price` VARCHAR(45) NOT NULL,
+  `price` FLOAT NOT NULL,
   `image` VARCHAR(45) NULL,
-  `type` VARCHAR(45) NOT NULL,
   `date` DATETIME NOT NULL,
   `Type_id` INT NOT NULL,
   `Institution_id` INT NOT NULL,
@@ -191,6 +190,7 @@ CREATE TABLE IF NOT EXISTS `Notification` (
   `message` VARCHAR(200) NOT NULL,
   `type` VARCHAR(45) NOT NULL,
   `User_id` INT NOT NULL,
+  `date_generated` DATETIME NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_Notification_User1`
     FOREIGN KEY (`User_id`)

@@ -12,4 +12,26 @@ public class Type {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
+	private String type;
+
+	public int getId() {
+		return id;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	@Override
+	public String toString() {
+		return "Type [id=" + id + ", type=" + type + "]";
+	}
+	
+	
+	
+	
 }

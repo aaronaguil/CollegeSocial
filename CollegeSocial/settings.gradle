@@ -1,0 +1,2 @@
+rootProject.name = 'CollegeSocial'
+includeFlat 'CollegeSocialJPA'

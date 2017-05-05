@@ -1,6 +1,7 @@
 package entities;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,16 +30,15 @@ public class Post {
 	@ManyToOne
 	@Column(name = "Institution_id")
 	private Institution institution;
-	@OneToOne
+	@ManyToOne
 	@Column(name = "Condition_id")
 	private Condition condition;
+	@ManyToOne
+	@Column(name = "Type_id")
+	private List<Post> posts;
 
 	public int getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getTitle() {
@@ -103,6 +103,14 @@ public class Post {
 
 	public void setCondition(Condition condition) {
 		this.condition = condition;
+	}
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
 	}
 
 	@Override

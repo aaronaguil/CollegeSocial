@@ -1,10 +1,13 @@
 package entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Course {
@@ -19,6 +22,8 @@ public class Course {
 	private String instructorLastName;
 	@Column(name = "course_code")
 	private String courseCode;
+	@OneToMany(mappedBy = "course")
+	private List<Book> books;
 
 	public int getId() {
 		return id;
@@ -54,6 +59,14 @@ public class Course {
 
 	public void setCourseCode(String courseCode) {
 		this.courseCode = courseCode;
+	}
+
+	public List<Book> getBooks() {
+		return books;
+	}
+
+	public void setBooks(List<Book> books) {
+		this.books = books;
 	}
 
 	@Override

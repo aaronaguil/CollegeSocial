@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -22,13 +23,13 @@ public class Book {
 	@Column(name = "has_notes")
 	private Boolean hasNotes;
 
-	@OneToOne
+	@ManyToOne
 	@Column(name = "Course_id")
 	private Course course;
 	@OneToOne
 	@Column(name = "Post_id")
 	private Post post;
-	@OneToOne
+	@ManyToOne
 	@Column(name = "Subject_id")
 	private Subject subject;
 

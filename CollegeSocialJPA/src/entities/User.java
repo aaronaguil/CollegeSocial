@@ -1,12 +1,19 @@
 package entities;
 
 import java.sql.Date;
+import java.util.List;
 
+import javax.management.Notification;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -24,6 +31,18 @@ public class User {
 	@Column(name = "registration_date")
 	private Date date;
 	private boolean admin;
+
+	@OneToMany(mappedBy = "user")
+	private List<Notification> notifications;
+	@OneToOne(mappedBy = "user")
+	private TutorInfo tutorInfo;
+	@OneToMany(mappedBy = "user")
+	private List<Message> messagesSent;
+	@OneToMany(mappedBy = "user")
+	private List<Message> messagesReceived;
+	@ManyToMany
+	@JoinTable(name = "User_Institution", joinColumns = @JoinColumn(name = "User_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "Institution_id"))
+	private List<Institution> institutions;
 
 	public int getId() {
 		return id;
@@ -95,6 +114,46 @@ public class User {
 
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
+	}
+
+	public List<Notification> getNotifications() {
+		return notifications;
+	}
+
+	public void setNotifications(List<Notification> notifications) {
+		this.notifications = notifications;
+	}
+
+	public TutorInfo getTutorInfo() {
+		return tutorInfo;
+	}
+
+	public void setTutorInfo(TutorInfo tutorInfo) {
+		this.tutorInfo = tutorInfo;
+	}
+
+	public List<Message> getMessagesSent() {
+		return messagesSent;
+	}
+
+	public void setMessagesSent(List<Message> messagesSent) {
+		this.messagesSent = messagesSent;
+	}
+
+	public List<Message> getMessagesReceived() {
+		return messagesReceived;
+	}
+
+	public void setMessagesReceived(List<Message> messagesReceived) {
+		this.messagesReceived = messagesReceived;
+	}
+
+	public List<Institution> getInstitutions() {
+		return institutions;
+	}
+
+	public void setInstitutions(List<Institution> institutions) {
+		this.institutions = institutions;
 	}
 
 	@Override

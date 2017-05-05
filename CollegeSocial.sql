@@ -36,18 +36,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Type`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `Type` ;
-
-CREATE TABLE IF NOT EXISTS `Type` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `type` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `Institution`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Institution` ;
@@ -56,6 +44,18 @@ CREATE TABLE IF NOT EXISTS `Institution` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `location` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Type`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `Type` ;
+
+CREATE TABLE IF NOT EXISTS `Type` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `type` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -84,32 +84,32 @@ CREATE TABLE IF NOT EXISTS `Post` (
   `price` FLOAT NOT NULL,
   `image` VARCHAR(45) NULL,
   `date` DATETIME NOT NULL,
-  `Type_id` INT NOT NULL,
   `Institution_id` INT NOT NULL,
-  `condition_id` INT NOT NULL,
+  `Type_id` INT NOT NULL,
+  `Condition_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_Post_Type1`
-    FOREIGN KEY (`Type_id`)
-    REFERENCES `Type` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_Post_Institution1`
     FOREIGN KEY (`Institution_id`)
     REFERENCES `Institution` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Post_condition1`
-    FOREIGN KEY (`condition_id`)
+  CONSTRAINT `fk_Post_Type1`
+    FOREIGN KEY (`Type_id`)
+    REFERENCES `Type` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Post_Condition1`
+    FOREIGN KEY (`Condition_id`)
     REFERENCES `Condition` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_Post_Type1_idx` ON `Post` (`Type_id` ASC);
-
 CREATE INDEX `fk_Post_Institution1_idx` ON `Post` (`Institution_id` ASC);
 
-CREATE INDEX `fk_Post_condition1_idx` ON `Post` (`condition_id` ASC);
+CREATE INDEX `fk_Post_Type1_idx` ON `Post` (`Type_id` ASC);
+
+CREATE INDEX `fk_Post_Condition1_idx` ON `Post` (`Condition_id` ASC);
 
 
 -- -----------------------------------------------------
@@ -151,18 +151,18 @@ CREATE TABLE IF NOT EXISTS `Book` (
   `edition` VARCHAR(45) NULL,
   `isbn` VARCHAR(45) NULL,
   `has_notes` INT NOT NULL,
-  `Course_id` INT NOT NULL,
   `Post_id` INT NOT NULL,
+  `Course_id` INT NOT NULL,
   `Subject_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_Book_Course`
-    FOREIGN KEY (`Course_id`)
-    REFERENCES `Course` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_Book_Post1`
     FOREIGN KEY (`Post_id`)
     REFERENCES `Post` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Book_Course1`
+    FOREIGN KEY (`Course_id`)
+    REFERENCES `Course` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Book_Subject1`
@@ -172,9 +172,9 @@ CREATE TABLE IF NOT EXISTS `Book` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_Book_Course_idx` ON `Book` (`Course_id` ASC);
-
 CREATE INDEX `fk_Book_Post1_idx` ON `Book` (`Post_id` ASC);
+
+CREATE INDEX `fk_Book_Course1_idx` ON `Book` (`Course_id` ASC);
 
 CREATE INDEX `fk_Book_Subject1_idx` ON `Book` (`Subject_id` ASC);
 

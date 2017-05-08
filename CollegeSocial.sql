@@ -150,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `Book` (
   `author` VARCHAR(45) NOT NULL,
   `edition` VARCHAR(45) NULL,
   `isbn` VARCHAR(45) NULL,
-  `has_notes` INT NOT NULL,
+  `has_notes` TINYINT(1) NULL DEFAULT 0,
   `Post_id` INT NOT NULL,
   `Course_id` INT NOT NULL,
   `Subject_id` INT NOT NULL,
@@ -585,6 +585,33 @@ INSERT INTO `Subject` (`id`, `name`) VALUES (18, 'Electrical Engineering');
 INSERT INTO `Subject` (`id`, `name`) VALUES (19, 'Mechanical Engineering');
 INSERT INTO `Subject` (`id`, `name`) VALUES (20, 'Computer Engineering');
 INSERT INTO `Subject` (`id`, `name`) VALUES (21, 'Speech');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `Book`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `TheCollegeSocialdb`;
+INSERT INTO `Book` (`id`, `title`, `author`, `edition`, `isbn`, `has_notes`, `Post_id`, `Course_id`, `Subject_id`) VALUES (1, 'Computer Science for College', 'Unknown', '4', '9780127447605', 0, 1, 1, 1);
+INSERT INTO `Book` (`id`, `title`, `author`, `edition`, `isbn`, `has_notes`, `Post_id`, `Course_id`, `Subject_id`) VALUES (2, 'Math for College', 'Unknown', '6', '9780127447605', 1, 6, 3, 2);
+INSERT INTO `Book` (`id`, `title`, `author`, `edition`, `isbn`, `has_notes`, `Post_id`, `Course_id`, `Subject_id`) VALUES (3, 'Biology for College', 'Unknown', '7', '9780127447605', 0, 11, 5, 3);
+INSERT INTO `Book` (`id`, `title`, `author`, `edition`, `isbn`, `has_notes`, `Post_id`, `Course_id`, `Subject_id`) VALUES (4, 'History for College', 'Unknown', '2', '9780127447605', 0, 16, 7, 4);
+INSERT INTO `Book` (`id`, `title`, `author`, `edition`, `isbn`, `has_notes`, `Post_id`, `Course_id`, `Subject_id`) VALUES (5, 'Art for College', 'Unknown', '3', '9780127447605', 1, 21, 9, 5);
+INSERT INTO `Book` (`id`, `title`, `author`, `edition`, `isbn`, `has_notes`, `Post_id`, `Course_id`, `Subject_id`) VALUES (6, 'English for College', 'Unknown', '5', '9780127447605', 0, 26, 11, 6);
+INSERT INTO `Book` (`id`, `title`, `author`, `edition`, `isbn`, `has_notes`, `Post_id`, `Course_id`, `Subject_id`) VALUES (7, 'French for College', 'Unknown', '2', '9780127447605', 1, 31, 13, 7);
+INSERT INTO `Book` (`id`, `title`, `author`, `edition`, `isbn`, `has_notes`, `Post_id`, `Course_id`, `Subject_id`) VALUES (8, 'Japanese for College', 'Unknown', '6', '9780127447605', 0, 36, 15, 8);
+INSERT INTO `Book` (`id`, `title`, `author`, `edition`, `isbn`, `has_notes`, `Post_id`, `Course_id`, `Subject_id`) VALUES (9, 'Physics for College', 'Unknown', '4', '9780127447605', 1, 41, 17, 9);
+INSERT INTO `Book` (`id`, `title`, `author`, `edition`, `isbn`, `has_notes`, `Post_id`, `Course_id`, `Subject_id`) VALUES (10, 'Chemistry for College', 'Unknown', '5', '9780127447605', 0, 46, 19, 10);
+INSERT INTO `Book` (`id`, `title`, `author`, `edition`, `isbn`, `has_notes`, `Post_id`, `Course_id`, `Subject_id`) VALUES (11, 'Communications for College', 'Unknown', '1', '9780127447605', 1, 51, 21, 11);
+INSERT INTO `Book` (`id`, `title`, `author`, `edition`, `isbn`, `has_notes`, `Post_id`, `Course_id`, `Subject_id`) VALUES (12, 'Business for College', 'Unknown', '3', '9780127447605', 0, 56, 23, 12);
+INSERT INTO `Book` (`id`, `title`, `author`, `edition`, `isbn`, `has_notes`, `Post_id`, `Course_id`, `Subject_id`) VALUES (13, 'Marketing for College', 'Unknown', '3', '9780127447605', 1, 61, 25, 13);
+INSERT INTO `Book` (`id`, `title`, `author`, `edition`, `isbn`, `has_notes`, `Post_id`, `Course_id`, `Subject_id`) VALUES (14, 'Finance for College', 'Unknown', '4', '9780127447605', 0, 66, 27, 14);
+INSERT INTO `Book` (`id`, `title`, `author`, `edition`, `isbn`, `has_notes`, `Post_id`, `Course_id`, `Subject_id`) VALUES (15, 'Psychology for College', 'Unknown', '5', '9780127447605', 1, 71, 29, 15);
+INSERT INTO `Book` (`id`, `title`, `author`, `edition`, `isbn`, `has_notes`, `Post_id`, `Course_id`, `Subject_id`) VALUES (16, 'Sociology for College', 'Unknown', '2', '9780127447605', 0, 76, 31, 16);
+INSERT INTO `Book` (`id`, `title`, `author`, `edition`, `isbn`, `has_notes`, `Post_id`, `Course_id`, `Subject_id`) VALUES (17, 'Information Technology for College', 'Unknown', '6', '9780127447605', 1, 81, 32, 17);
+INSERT INTO `Book` (`id`, `title`, `author`, `edition`, `isbn`, `has_notes`, `Post_id`, `Course_id`, `Subject_id`) VALUES (18, 'Mechanical Engineering for College', 'Unknown', '1', '9780127447605', 0, 86, 34, 18);
 
 COMMIT;
 

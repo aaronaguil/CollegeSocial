@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Course {
 
@@ -22,6 +24,8 @@ public class Course {
 	private String instructorLastName;
 	@Column(name = "course_code")
 	private String courseCode;
+	
+	@JsonBackReference
 	@OneToMany(mappedBy = "course")
 	private List<Book> books;
 

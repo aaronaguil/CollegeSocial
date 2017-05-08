@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Notifcation {
 
@@ -23,7 +25,8 @@ public class Notifcation {
 
 	@Column(name = "date_generated")
 	private Date dateGenerated;
-
+	
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "User_id")
 	private User user;

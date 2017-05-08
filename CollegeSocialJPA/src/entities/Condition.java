@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Condition {
 
@@ -17,6 +19,7 @@ public class Condition {
 
 	private String condition;
 
+	@JsonBackReference
 	@OneToMany(mappedBy = "condtion")
 	private List<Post> posts;
 

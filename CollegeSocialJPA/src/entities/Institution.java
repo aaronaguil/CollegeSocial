@@ -8,6 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Institution {
 
@@ -17,10 +20,12 @@ public class Institution {
 
 	private String name;
 	private String location;
-
+	
+	@JsonBackReference
 	@ManyToMany(mappedBy = "institutions")
 	private List<User> users;
 
+	@JsonManagedReference
 	@ManyToMany(mappedBy = "institution")
 	private List<Post> posts;
 

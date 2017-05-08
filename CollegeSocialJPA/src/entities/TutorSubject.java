@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "Tutor_Subject")
 public class TutorSubject {
@@ -20,6 +22,7 @@ public class TutorSubject {
 	private float rating;
 	private int rate;
 
+	@JsonBackReference
 	@ManyToOne
 	@Column(name = "tutor_info")
 	private TutorInfo tutorInfo;

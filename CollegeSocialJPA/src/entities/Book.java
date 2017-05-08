@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Book {
 
@@ -22,13 +25,18 @@ public class Book {
 
 	@Column(name = "has_notes")
 	private Boolean hasNotes;
-
+	
+	@JsonManagedReference
 	@ManyToOne
 	@Column(name = "Course_id")
 	private Course course;
+	
+	@JsonBackReference
 	@OneToOne
 	@Column(name = "Post_id")
 	private Post post;
+	
+	@JsonManagedReference
 	@ManyToOne
 	@Column(name = "Subject_id")
 	private Subject subject;

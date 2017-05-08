@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Post {
 
@@ -24,18 +27,25 @@ public class Post {
 	private String image;
 	private Date date;
 
+	@JsonManagedReference
 	@OneToOne
 	@Column(name = "Type_id")
 	private Type type;
+
+	@JsonBackReference
 	@ManyToOne
 	@Column(name = "Institution_id")
 	private Institution institution;
+	
+	@JsonManagedReference
+	@OneToOne
+	@Column(name = "post")
+	private Book book;
+
+	@JsonManagedReference
 	@ManyToOne
-	@Column(name = "Condition_id")
+	@Column(name = "Condition_of_item_id")
 	private Condition condition;
-	@ManyToOne
-	@Column(name = "Type_id")
-	private List<Post> posts;
 
 	public int getId() {
 		return id;
@@ -105,12 +115,12 @@ public class Post {
 		this.condition = condition;
 	}
 
-	public List<Post> getPosts() {
-		return posts;
+	public Book getBook() {
+		return book;
 	}
 
-	public void setPosts(List<Post> posts) {
-		this.posts = posts;
+	public void setBook(Book book) {
+		this.book = book;
 	}
 
 	@Override

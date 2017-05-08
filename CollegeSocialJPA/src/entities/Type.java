@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Type {
 
@@ -16,7 +18,8 @@ public class Type {
 	private int id;
 
 	private String type;
-
+	
+	@JsonBackReference
 	@OneToMany(mappedBy = "type")
 	private List<Post> post;
 

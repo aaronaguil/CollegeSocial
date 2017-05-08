@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Message {
 
@@ -19,9 +21,11 @@ public class Message {
 	private String message;
 	@Column(name = "datetime")
 	private Date messageDate;
+	@JsonManagedReference
 	@ManyToOne
 	@Column(name = "user_sent")
 	private User userSent;
+	@JsonManagedReference
 	@ManyToOne
 	@Column(name = "user_received")
 	private User userRecieved;

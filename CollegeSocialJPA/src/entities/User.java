@@ -15,6 +15,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class User {
 
@@ -31,15 +34,19 @@ public class User {
 	@Column(name = "registration_date")
 	private Date date;
 	private boolean admin;
-
+	@JsonManagedReference
 	@OneToMany(mappedBy = "user")
 	private List<Notification> notifications;
+	@JsonManagedReference
 	@OneToOne(mappedBy = "user")
 	private TutorInfo tutorInfo;
+	@JsonBackReference
 	@OneToMany(mappedBy = "user")
 	private List<Message> messagesSent;
+	@JsonBackReference
 	@OneToMany(mappedBy = "user")
 	private List<Message> messagesReceived;
+	@JsonManagedReference
 	@ManyToMany
 	@JoinTable(name = "User_Institution", joinColumns = @JoinColumn(name = "User_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "Institution_id"))
 	private List<Institution> institutions;

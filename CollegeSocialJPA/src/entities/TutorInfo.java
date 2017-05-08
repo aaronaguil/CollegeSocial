@@ -12,6 +12,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "Tutor_Info")
 public class TutorInfo {
@@ -24,11 +27,13 @@ public class TutorInfo {
 
 	@Column(name = "date_start")
 	private Date startDate;
-
+	
+	@JsonBackReference
 	@OneToOne
 	@Column(name = "User_id")
 	private User user;
-
+	
+	@JsonManagedReference
 	@OneToMany(mappedBy = "tutorInfo")
 	private List<TutorSubject> tutorSubject;
 
